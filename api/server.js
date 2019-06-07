@@ -1,21 +1,18 @@
 const express = require('express');
-// const recipeRouter = require('./routes/router.js')
-
-const knex = require('knex');
-// const knexConfig = require('./knexfile.js');
-
-// const db = knex(knexConfig.development);
+const recipeRouter = require('../routes/recipeRouter.js');
+const dishRouter = require('../routes/dishRouter.js');
 
 /* MIDDLEWARE */
 const server = express();
 server.use(express.json());
 
 /* ROUTER */
-// server.use('/api/routes', recipeRouter)
+server.use('/recipes', recipeRouter);
+server.use('/dishes', dishRouter);
 
 /* SANITY CHECK */
 server.get('/', (req, res) => {
-    res.send(`YOU READY KIDS?`);
-  });
+  res.send(`ARE YOU READY KIDS?`);
+});
 
 module.exports = server;
